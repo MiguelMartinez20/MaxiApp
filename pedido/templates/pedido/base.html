@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>MaxiApp</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'pedido/css/fontello.css' %}">
+        <link rel="stylesheet" href="{% static 'pedido/css/main.css' %}">
+        <link rel="stylesheet" href="{% static 'pedido/css/menu.css' %}">
+        <link rel="stylesheet" href="{% static 'pedido/css/banner.css' %}">
+        <link rel="stylesheet" href="{% static 'pedido/css/productos.css' %}">
+        <link rel="stylesheet" href="{% static 'pedido/css/info.css' %}">
+    </head>
+
+    <body>
+        <header>
+            <div class="contenedor">
+                <a href="http://scrumreserva.pythonanywhere.com/"><h1 class="icon-fast-food">MaxiApp</h1></a>
+                <input type="checkbox" id="menu-bar">
+                <label class="icon-menu" for="menu-bar"></label>
+                <nav class="menu">
+                    <a href="http://scrumreserva.pythonanywhere.com/">INICIO</a>
+                    <a href="http://scrumreserva.pythonanywhere.com/admin">INGRESAR</a>
+                    <a href="http://scrumreserva.pythonanywhere.com/registro">REGISTRARSE</a>
+                    {% if user.is_authenticated and user.is_staff %}
+                    <a href="http://scrumreserva.pythonanywhere.com/admin">CERRAR SESIÓN</a>
+                    {% endif %}
+                </nav>
+            </div>
+        </header>
+
+{% block content %}
+
+{% endblock %}
+
+<footer>
+            <div class="contenedor">
+                <p class="copyright">MaxiApp &copy; 2019</p>
+                <div class="redesociales">
+                    <a class="icon-facebook-circled" href="https://facebook.com/"></a>
+                    <a class="icon-twitter-circled" href="https://twitter.com/"></a>
+                    <a class="icon-instagram-circled" href="http://instagram.com/"></a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
+
+
