@@ -31,3 +31,26 @@ def register_view(request):
             return render(request, 'pedido/register.html', ctx)
     ctx = {'form':form}
     return render(request, 'pedido/register.html', ctx)
+
+def product_list(request):
+    products = Product.objects.all()
+    return render(request, 'pedido/producto.html', {'products': products})
+
+def product_detail(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+
+    if (request.method == "POST"):
+
+        owner = request.user
+        Order.objects.create(author=owner, detail=product.description)
+
+        url = "http://scrumreserva.pythonanywhere.com/admin"
+        return redirect(url)
+    else:
+        return render(request, 'pedido/producto_detalle.html', {'product': product})
+
+def history(request):
+    owner = request.user.username
+    orders = Order.objects.filter(author=owner)
+    return render(request, 'pedido/history.html', {'orders': orders})
+

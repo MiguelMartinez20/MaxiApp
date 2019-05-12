@@ -7,6 +7,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.maxiapp, name='maxiapp'),
     path('registro/', views.register_view, name='registro'),
+    path('producto/', views.product_list, name='producto'),
+    path('producto/<int:pk>/', views.product_detail, name='product_detail'),
+    path('historial/', views.history, name='historial'),
     path('reset-password/', PasswordResetView.as_view(), name='reset_password'),
     path('reset-password/done/', PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset-password/confirm/P<uidb64>P<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),

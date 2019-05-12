@@ -16,7 +16,7 @@ class Order(models.Model):
         (RETIRADO, 'Orden retirada'),
     )
 
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.CharField(max_length=200)
     date_time = models.DateTimeField(default=timezone.now)
     date_pickup = models.DateTimeField(blank=True, null=True)
     detail = models.CharField(max_length=200)

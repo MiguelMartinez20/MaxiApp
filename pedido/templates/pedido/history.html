@@ -10,12 +10,12 @@
         <link rel="stylesheet" href="{% static 'pedido/css/fontello.css' %}">
         <link rel="stylesheet" href="{% static 'pedido/css/main.css' %}">
         <link rel="stylesheet" href="{% static 'pedido/css/menu.css' %}">
-        <link rel="stylesheet" href="{% static 'pedido/css/banner.css' %}">
-        <link rel="stylesheet" href="{% static 'pedido/css/productos.css' %}">
+        <link rel="stylesheet" href="{% static 'pedido/css/bannerproductos.css' %}">
+        <link rel="stylesheet" href="{% static 'pedido/css/productoslista.css' %}">
         <link rel="stylesheet" href="{% static 'pedido/css/info.css' %}">
     </head>
 
-    <body>
+      <body>
         <header>
             <div class="contenedor">
                 <a href="http://scrumreserva.pythonanywhere.com/"><h1 class="icon-fast-food">MaxiApp</h1></a>
@@ -23,7 +23,7 @@
                 <label class="icon-menu" for="menu-bar"></label>
                 <nav class="menu">
                     <a href="http://scrumreserva.pythonanywhere.com/">INICIO</a>
-                    <a href="http://scrumreserva.pythonanywhere.com/producto">PRODUCTO</a>
+                    <a href="http://scrumreserva.pythonanywhere.com/producto">PRODUCTOS</a>
                     <a href="http://scrumreserva.pythonanywhere.com/admin">INGRESAR</a>
                     <a href="http://scrumreserva.pythonanywhere.com/registro">REGISTRARSE</a>
                     {% if user.is_authenticated and user.is_staff %}
@@ -34,21 +34,46 @@
             </div>
         </header>
 
-{% block content %}
+        <main>
+            <section id="bannerproduct">
+                <img src="{% static 'pedido/img/bannerproductos.png' %}">
+                <div class="contenedor">
+                    <h1>
+				        Comienza tu dia <br>
+				        con un buen desayuno!
+				    </h1>
 
-{% endblock %}
+                </div>
+            </section>
 
-<footer>
+            <section id="nuestrosproductoslistado">
+                <h2>HISTORIAL DE PEDIDOS</h2>
+                <div class="contenedor">
+
+                {% for order in orders %}
+                    <article>
+                        <h3 id="Producto_name"><b>{{ order.detail }}</b></h3>
+                        <h4>Fecha Reserva: {{ order.date_time }}</h4>
+                        <h4>Fecha Retiro : {{ order.date_pickup }}</h4>
+                        <br>
+                        <a href="" class="botoncomprar">{{ order.state }}</a>
+                    </article>
+                {% endfor %}
+
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
             <div class="contenedor">
                 <p class="copyright">MaxiApp &copy; 2019</p>
                 <div class="redesociales">
-                    <a class="icon-facebook-circled" href="https://facebook.com/"></a>
-                    <a class="icon-twitter-circled" href="https://twitter.com/"></a>
-                    <a class="icon-instagram-circled" href="http://instagram.com/"></a>
+                    <a class="icon-facebook-circled" href="#"></a>
+                    <a class="icon-twitter-circled" href="#"></a>
+                    <a class="icon-instagram-circled" href="#"></a>
                 </div>
             </div>
         </footer>
     </body>
 </html>
-
-
